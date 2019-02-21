@@ -17,6 +17,7 @@ export class DetailPollComponent implements OnInit {
   topicTitle
   id: string
   formStatus: boolean = false
+  isAuthenticated: boolean
 
   barChartType = 'PieChart'
   barChartData = []
@@ -45,7 +46,7 @@ export class DetailPollComponent implements OnInit {
               private ip: IpService) {}
 
   ngOnInit() {
-
+      this.isAuthenticated = this.auth.isAuthenticated()
       this.route.params
       .pipe(
         mergeMap((params) => {

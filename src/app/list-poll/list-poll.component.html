@@ -4,7 +4,7 @@
     <h1 class="text-center" *ngIf="!isMyPoll">Polls</h1>
 
   <div class="col-8 offset-2">
-    <button id="addPoll" class="btn mb-3" routerLink="/new" *ngIf="auth.isAuthenticated()">
+    <button id="addPoll" class="btn mb-3" routerLink="/new" *ngIf="isAuthenticated">
       <span class="fa fa-plus"> Add new poll</span>
     </button>
     <div *ngFor = "let poll of polls; let i = index" class="list mb-2">
