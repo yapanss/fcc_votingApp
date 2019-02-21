@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 var cors = require('cors')
 var bodyParser = require('body-parser')
-
+var path = require('path');
 var pollApi = require('./routes/poll.route')
 var userApi = require('./routes/user.route')
 // var loginApi = require('./routes/login.route')
@@ -22,7 +22,10 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/dist/votingApp'))
+app.get('/*', function(req,res) {
 
+  res.sendFile(path.join(__dirname+'/dist/votingApp/index.html'));
+});
 
 // loginApi(app)
 // app.use(authenticateApi)
