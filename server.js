@@ -1,6 +1,8 @@
 const dotenv = require("dotenv");
   dotenv.config()
 
+const PORT = process.env.PORT || 3000
+
 var express = require('express')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
@@ -22,6 +24,7 @@ mongoose.connect('mongodb://yapanss:11Braves@ds023438.mlab.com:23438/fcc_votinga
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static(__dirname + '/dist/votingApp'))
 
 
 // loginApi(app)
@@ -31,4 +34,4 @@ userApi(app)
 pollApi(app)
 // userInfoApi(app)
 
-app.listen(3000, console.log('Server listening on port 3000'))
+app.listen(PORT, console.log(`Server listening on port ${PORT}`))
