@@ -27,7 +27,7 @@
               <span class="fa fa-plus"> add new option</span>
             </button>
             <div *ngIf="formStatus">
-              <input type="text" name="topicTitle" [(ngModel)]="topicTitle" required placeholder="Topic title">
+              <input type="text" name="topicTitle" [(ngModel)]="topicTitle" required placeholder="Option title">
               <button (click)="addTopic()" class="btn btn-success mr-1 ml-1">add</button>
               <button (click)="cancelTopic()" class="btn btn-secondary">cancel</button>
             </div>

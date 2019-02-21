@@ -36,13 +36,11 @@ export class AddPollComponent implements OnInit {
       author: localStorage.getItem('email')
     }
 
-console.log(poll)
   if(this.topicArray.length < 2){
     alert('Your poll must have at least two options !')
   } else{
     this.apiService.postForm('poll', poll)
         .subscribe(response => {
-          console.log(response)
           alert('poll créé !')
           this.route.navigate(['/mypoll'])
         })
@@ -63,7 +61,6 @@ console.log(poll)
       votes: 0
     }
     this.topicArray.push(topic)
-    console.log(this.topicArray)
     this.topicTitle = ''
     this.formStatus = false
 

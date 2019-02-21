@@ -24,10 +24,6 @@ export class DetailPollComponent implements OnInit {
       pieHole: 0.5,
       height: 300,
       chartArea: {
-        // top: 10,
-        // right: 10,
-        // bottom: 10,
-        // left: 10,
         height: '80%',
         width: '80%'
       },
@@ -85,14 +81,13 @@ export class DetailPollComponent implements OnInit {
 
   addTopic() {
     if(!this.topicTitle) {
-      alert('Provide a title for the topic !')
+      alert('Provide a title for the option !')
     } else {
       let data = {title: this.topicTitle, votes: 0}
         this.apiService.updateItem('poll', this.id, data)
         .subscribe(response => {
           this.poll = response['poll']
           this.barChartData = this.createBarChartData(this.poll)
-          console.log(response)
           this.formStatus = false
     })
     }
