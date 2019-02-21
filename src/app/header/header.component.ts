@@ -8,22 +8,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  // isAuthenticated: boolean
-  // _avatar: string
+  constructor(public auth: AuthService) {
 
-  constructor(public auth: AuthService) { }
-
-  ngOnInit() {
-    // this.isAuthenticated = this.auth.isAuthenticated()
-    // this._avatar = localStorage.getItem('avatar') ? localStorage.getItem('avatar') : ""
   }
 
-  // logout() {
-  //   this.auth.logout()
-  // }
-  // login() {
-  //   this.auth.login()
-  // }
+  ngOnInit() {
 
+  }
 
 }

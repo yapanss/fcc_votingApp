@@ -17,7 +17,6 @@ export class DetailPollComponent implements OnInit {
   topicTitle
   id: string
   formStatus: boolean = false
-  // isAuthenticated: boolean
 
   barChartType = 'PieChart'
   barChartData = []
@@ -41,23 +40,19 @@ export class DetailPollComponent implements OnInit {
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
-              private auth: AuthService,
+              public auth: AuthService,
               private router: Router,
               private ip: IpService) {}
 
   ngOnInit() {
-      // this.isAuthenticated = this.auth.isAuthenticated()
       this.route.params
       .pipe(
         mergeMap((params) => {
-          // console.log(params)
           this.id = params.id
-          // console.log(this.id)
          return this.apiService.getItem('poll', this.id)
        }),
         catchError(err => {throw(err)})
       ).subscribe(poll => {
-        // console.log(poll)
         this.poll = poll
         this.barChartData = this.poll.topics.map(topic => {
           return [topic.title, topic.votes]

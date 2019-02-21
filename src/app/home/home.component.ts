@@ -8,15 +8,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
-  // isAuthenticated: boolean
   ngOnInit() {
-    // this.isAuthenticated = this.auth.isAuthenticated()
   }
-
-  // login() {
-  //   this.auth.login()
-  // }
-
 }

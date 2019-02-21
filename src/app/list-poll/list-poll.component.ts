@@ -14,15 +14,13 @@ export class ListPollComponent implements OnInit {
 polls
 isMyPoll: boolean = false
 texte: string = "Bonjour"
-// isAuthenticated: boolean
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
-              private auth: AuthService) { }
+              public auth: AuthService) { }
 
   ngOnInit() {
 
-    // this.isAuthenticated = this.auth.isAuthenticated()
     this.route.url
       .pipe(
         mergeMap((url) => {
