@@ -1,0 +1,24 @@
+$navbackground: purple;
+$itemcolor: white;
+$logocolor: goldenrod;
+
+nav {
+  background-color: $navbackground;
+}
+
+li {
+  list-style-type: none;
+
+}
+.nav-item {
+    float: right;
+}
+a {
+  text-decoration: none;
+}
+
+#logo {
+  // float: left;
+  // clear: both;
+  color: $logocolor;
+}

@@ -1,0 +1,30 @@
+<div class="">
+<nav class="navbar navbar-expand-sm d-flex justify-content-between container-fluid">
+  <a routerLink="/" class="navbar-brand">
+    My Voting App
+  </a>
+  <ul class="navbar-nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/home">
+        <span class="fa fa-home"> Home</span>
+      </a>
+    </li>
+    <li class="nav-item"><a class="nav-link" routerLink="/new" *ngIf="auth.isAuthenticated()">Create Poll</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/mypoll" *ngIf="auth.isAuthenticated()">My polls</a></li>
+    <li class="nav-item mr-5"><a class="nav-link" routerLink="/poll">Polls</a></li>
+    <li class="nav-item">
+      <a class="nav-link log" (click)="auth.login()" *ngIf="!auth.isAuthenticated()">
+        <span class="fa fa-sign-in"> Sign in </span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="auth.isAuthenticated()">
+      <img src={{auth._avatar}} width="40" height="40" class="rounded-circle">
+    </li>
+    <li class="nav-item">
+      <a class="nav-link log" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">
+        <span class="fa fa-sign-out">Logout</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>

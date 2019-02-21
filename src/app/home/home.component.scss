@@ -1,0 +1,23 @@
+.container {
+  margin-top: 50px;
+}
+
+.jumbotron {
+  background-color: #708090;
+  color: white;
+  font-size: 1.7em;
+  // height: 200px;
+  text-align: center;
+  padding-top: 15px;
+  border: solid blue 3px;
+  p {
+    font-size: 1em;
+  }
+}
+.signin {
+  cursor: pointer;
+  color: goldenrod;
+}
+p {
+  font-size: 1.2em;
+}

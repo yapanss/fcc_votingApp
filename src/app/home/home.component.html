@@ -1,0 +1,33 @@
+<div class="container" *ngIf="!auth.isAuthenticated()">
+  <div class="jumbotron">
+    <h1>My Voting App</h1>
+    <p>Click <i (click)="auth.login()" class="signin"> here </i>to sign in with your following accounts: Facebook, Twitter or Github</p>
+  </div>
+  <div class="mt-5 instruction">
+    <p>As an unauthenticated user, you can only:</p>
+    <ul>
+      <li>See and vote on everyone's polls.</li>
+      <li>See the results of polls in chart form</li>
+    </ul>
+    <p class="mt-3">Please sign in to have more options</p>
+  </div>
+</div>
+
+<div class="container" *ngIf="auth.isAuthenticated()">
+  <div class="jumbotron">
+  <h1>My Voting App</h1>
+  <p>Wellcome {{auth._name}}</p>
+</div>
+<div class="mt-5 instruction">
+  <p>As an authenticated user, you can also :</p>
+  <ul>
+    <li>create a poll with any number of possible items.</li>
+    <li>Keep your polls and come back later to access them.</li>
+    <li>Share your polls with your friends</li>
+    <li>see the aggregate results of your polls.</li>
+    <li>Create a new option If you don't like the options on a poll.</li>
+    <li>Delete the polls you don't want any more</li>
+  </ul>
+</div>
+</div>
+

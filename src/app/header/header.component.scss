@@ -1,0 +1,31 @@
+@import "../../assets/_variables";
+
+nav {
+  background-color: #708090;
+}
+
+.navbar-brand {
+  color: $linkcolor;
+}
+
+img {
+  background-color: white;
+}
+
+li {
+  list-style-type: none;
+  a {
+    color: $linkcolor;
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: #5f9ea0;
+  }
+}
+ .log {
+    cursor: pointer;
+    text-decoration: none;
+ }
+ li.log:hover {
+    color: #fff;
+ }
