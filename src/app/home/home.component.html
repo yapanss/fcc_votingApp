@@ -1,7 +1,7 @@
-<div class="container" *ngIf="!isAuthenticated">
+<div class="container" *ngIf="!auth.isAuthenticated()">
   <div class="jumbotron">
     <h1>My Voting App</h1>
-    <p>Click <i (click)="login()" class="signin"> here </i>to sign in with your following accounts: Facebook, Twitter or Github</p>
+    <p>Click <i (click)="auth.login()" class="signin"> here </i>to sign in with your following accounts: Facebook, Twitter or Github</p>
   </div>
   <div class="mt-5 instruction">
     <p>As an unauthenticated user, you can only:</p>
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div class="container" *ngIf="isAuthenticated">
+<div class="container" *ngIf="auth.isAuthenticated()">
   <div class="jumbotron">
   <h1>My Voting App</h1>
   <p>Wellcome {{auth._name}}</p>

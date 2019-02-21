@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service'
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +18,6 @@ export class AddPollComponent implements OnInit {
   topicArray: any[] = []
 
   constructor(private apiService: ApiService,
-              private auth: AuthService,
               private route: Router) { }
 
   ngOnInit() {

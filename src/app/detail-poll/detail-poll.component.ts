@@ -17,7 +17,7 @@ export class DetailPollComponent implements OnInit {
   topicTitle
   id: string
   formStatus: boolean = false
-  isAuthenticated: boolean
+  // isAuthenticated: boolean
 
   barChartType = 'PieChart'
   barChartData = []
@@ -46,18 +46,18 @@ export class DetailPollComponent implements OnInit {
               private ip: IpService) {}
 
   ngOnInit() {
-      this.isAuthenticated = this.auth.isAuthenticated()
+      // this.isAuthenticated = this.auth.isAuthenticated()
       this.route.params
       .pipe(
         mergeMap((params) => {
-          console.log(params)
+          // console.log(params)
           this.id = params.id
-          console.log(this.id)
+          // console.log(this.id)
          return this.apiService.getItem('poll', this.id)
        }),
         catchError(err => {throw(err)})
       ).subscribe(poll => {
-        console.log(poll)
+        // console.log(poll)
         this.poll = poll
         this.barChartData = this.poll.topics.map(topic => {
           return [topic.title, topic.votes]
@@ -92,17 +92,14 @@ export class DetailPollComponent implements OnInit {
           this.formStatus = false
     })
     }
-
   }
 
   vote(i) {
-    console.log(i)
-
     this.ip.getIpAddress()
     .pipe(
       mergeMap(response => {
         let ip = response['ip']
-        console.log("response" + response['ip'])
+
         if(this.poll.voters.indexOf(ip) != -1) {
             alert('You have already voted !')
             return empty()
@@ -115,7 +112,6 @@ export class DetailPollComponent implements OnInit {
 
       })
     ).subscribe(response => {
-      console.log(response)
       this.barChartData = this.createBarChartData(this.poll)
     })
   }

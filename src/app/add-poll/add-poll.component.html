@@ -28,10 +28,7 @@
 </div>
 <div *ngIf="formStatus" class="row">
     <div class="form-group col-6 offset-2">
-      <!-- <label for="topic_title" class="col-2">Topic title</label> -->
-      <!-- <div class="col-8>"> -->
         <input class="form-control" type="text" name="topicTitle" [(ngModel)]="topicTitle" placeholder="Topic title" required>
-      <!-- </div> -->
     </div>
   <div class="btn-group" style="padding-bottom: 12px">
     <button type = "button" (click)="addTopic(topicTitle)" class="btn btn-secondary mr-1 bg-success">add</button>

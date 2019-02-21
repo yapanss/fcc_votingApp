@@ -14,7 +14,7 @@ export class ListPollComponent implements OnInit {
 polls
 isMyPoll: boolean = false
 texte: string = "Bonjour"
-isAuthenticated: boolean
+// isAuthenticated: boolean
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
@@ -22,11 +22,10 @@ isAuthenticated: boolean
 
   ngOnInit() {
 
-    this.isAuthenticated = this.auth.isAuthenticated()
+    // this.isAuthenticated = this.auth.isAuthenticated()
     this.route.url
       .pipe(
         mergeMap((url) => {
-          console.log(url[0].path)
           if(url[0].path === 'poll') {
             this.isMyPoll = false
             return this.apiService.getAllList('poll')
@@ -36,7 +35,6 @@ isAuthenticated: boolean
           }
         })
       ).subscribe(polls => {
-          console.log(polls)
           this.polls = polls
       })
   }
@@ -46,7 +44,6 @@ isAuthenticated: boolean
       this.apiService.deleteItem('poll', id)
       .subscribe(rep => {
         this.polls.splice(index, 1)
-        console.log(rep)
       })
     }
 
