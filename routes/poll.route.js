@@ -6,15 +6,14 @@ module.exports = (app) => {
     .get((req, res) => {
       handlePoll.getAllPolls()
       .then((polls) => {
-        res.send(polls)
+        res.json(polls)
       })
       .catch((err) => console.log(err))
     })
     .post((req, res) => {
      handlePoll.postPoll(req.body)
      .then(poll => {
-      console.log(req.body)
-     	res.send(poll)
+     	res.json(poll)
      })
      .catch(err => console.log(err))
     })
@@ -25,7 +24,7 @@ module.exports = (app) => {
       handlePoll.getOnePoll(id)
       .then((poll) => {
 
-        res.send(poll)
+        res.json(poll)
       })
       .catch((err) => console.log("ERREUR...", err))
     })
@@ -50,7 +49,7 @@ module.exports = (app) => {
       // id2 = req.params.id2
       handlePoll.updateVote(id, req.body)
       .then((poll) => {
-        res.send(poll)
+        res.json(poll)
       })
       .catch((err) => console.log("ERREUR...", err))
     })
@@ -60,7 +59,7 @@ module.exports = (app) => {
       console.log(req.ip)
       handlePoll.getSomePolls(req.params.parame)
       .then((polls) => {
-        res.send(polls)
+        res.json(polls)
       })
       .catch((err) => console.log(err))
     })
