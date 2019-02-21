@@ -6,12 +6,12 @@ import * as auth0 from 'auth0-js';
 @Injectable()
 export class AuthService {
 
-  private _idToken: string;
-  private _accessToken: string;
-  private _expiresAt: number;
-  private _email: string;
-  private _name: string;
-  private _avatar: string;
+   _idToken: string;
+   _accessToken: string;
+   _expiresAt: number;
+   _email: string;
+   _name: string;
+   _avatar: string;
 
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
