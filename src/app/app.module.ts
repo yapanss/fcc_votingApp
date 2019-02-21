@@ -15,6 +15,7 @@ import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 import { ListPollComponent } from './list-poll/list-poll.component';
 import { DetailPollComponent } from './detail-poll/detail-poll.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DetailPollComponent } from './detail-poll/detail-poll.component';
     HeaderComponent,
     AddPollComponent,
     ListPollComponent,
-    DetailPollComponent
+    DetailPollComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -33,7 +33,7 @@ export class AddPollComponent implements OnInit {
       description: this.description,
       topics: this.topicArray,
       voters: [],
-      author: localStorage.getItem('email')
+      author: localStorage.getItem('email')? localStorage.getItem('email') : localStorage.getItem('name')
     }
 
   if(this.topicArray.length < 2){
