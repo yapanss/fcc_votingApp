@@ -7,12 +7,12 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  const baseUrl = "/api/"
+  baseUrl:string = "/api/"
 
   constructor(private http: HttpClient) { }
 
   postForm(collection, data) {
-    let url = baseUrl+collection
+    let url = this.baseUrl+collection
     let body = JSON.stringify(data)
     return this.http.post(url, body, {
       headers: new HttpHeaders({
@@ -22,22 +22,22 @@ export class ApiService {
   }
 
   getAllList(collection) {
-    let url = baseUrl+collection
+    let url = this.baseUrl+collection
     return this.http.get(url)
   }
 
   getSomeList(collection, parame) {
-    let url = baseUrl+collection+'/'+parame
+    let url = this.baseUrl+collection+'/'+parame
     return this.http.get(url)
   }
 
   getItem(collection, id) {
-    let url = baseUrl+collection+'/'+id
+    let url = this.baseUrl+collection+'/'+id
     return this.http.get(url)
   }
 
    updateItem(collection, id, data) {
-    let url = baseUrl+collection+'/'+id
+    let url = this.baseUrl+collection+'/'+id
     let body = JSON.stringify(data)
 
     return this.http.put(url, body, {
@@ -48,13 +48,13 @@ export class ApiService {
   }
 
    deleteItem(collection, id) {
-    let url = baseUrl+collection+'/'+id
+    let url = this.baseUrl+collection+'/'+id
     return this.http.delete(url)
   }
 
 
   updateVote(id1, index, data) {
-    let url = baseUrl+'poll/'+id1+'/'+index
+    let url = this.baseUrl+'poll/'+id1+'/'+index
     let body = JSON.stringify(data)
     return this.http.put(url, body, {
       headers: new HttpHeaders({
