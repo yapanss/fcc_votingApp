@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { Params, ActivatedRoute, Router } from '@angular/router';
 import {map, mergeMap, catchError} from 'rxjs/operators';
 import { empty } from 'rxjs';
+import { Poll } from '../interface/poll.interface';
 
 @Component({
   selector: 'app-detail-poll',
@@ -13,7 +14,7 @@ import { empty } from 'rxjs';
 })
 export class DetailPollComponent implements OnInit {
 
-  poll
+  poll: Poll
   topicTitle
   id: string
   formStatus: boolean = false
@@ -52,7 +53,7 @@ export class DetailPollComponent implements OnInit {
          return this.apiService.getItem('poll', this.id)
        }),
         catchError(err => {throw(err)})
-      ).subscribe(poll => {
+      ).subscribe((poll: Poll) => {
         this.poll = poll
         this.barChartData = this.poll.topics.map(topic => {
           return [topic.title, topic.votes]
@@ -81,8 +82,8 @@ export class DetailPollComponent implements OnInit {
     } else {
       let data = {title: this.topicTitle, votes: 0}
         this.apiService.updateItem('poll', this.id, data)
-        .subscribe(response => {
-          this.poll = response['poll']
+        .subscribe((poll: Poll) => {
+          this.poll = poll
           this.barChartData = this.createBarChartData(this.poll)
           this.formStatus = false
     })

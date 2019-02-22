@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { Params, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import {map, switchMap, mergeMap} from 'rxjs/operators';
+import { Poll } from '../interface/poll.interface';
 
 @Component({
   selector: 'app-list-poll',
@@ -11,9 +12,10 @@ import {map, switchMap, mergeMap} from 'rxjs/operators';
 })
 export class ListPollComponent implements OnInit {
 
-polls
 isMyPoll: boolean = false
 texte: string = "Bonjour"
+// polls: Array<Poll>
+polls: Poll[]
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
@@ -32,7 +34,7 @@ texte: string = "Bonjour"
               return this.apiService.getSomeList('mypoll', localStorage.getItem('email'))
           }
         })
-      ).subscribe(polls => {
+      ).subscribe((polls: Poll[]) => {
           this.polls = polls
       })
   }
@@ -40,8 +42,9 @@ texte: string = "Bonjour"
   delete(id,index) {
     if(confirm('Voulez-vous vraimer supprimer ce poll ?')) {
       this.apiService.deleteItem('poll', id)
-      .subscribe(rep => {
+      .subscribe((rep) => {
         this.polls.splice(index, 1)
+        console.log(rep)
       })
     }
 

@@ -1,6 +1,6 @@
 <div id="background">
   <div class="container mt-5 mb-5">
-    <h1 class="text-center" *ngIf="isMyPoll">Your Polls</h1>
+    <h1 class="text-center" *ngIf="isMyPoll">My Polls</h1>
     <h1 class="text-center" *ngIf="!isMyPoll">Polls</h1>
 
   <div class="col-8 offset-2">
@@ -14,7 +14,7 @@
       </div>
       <div class="row actionContainer" *ngIf="isMyPoll">
         <div class="col-6">
-          <a class="btn btn-block btn-info action" href="https://twitter.com/intent/tweet?url=http://localhost:4200/poll/{{poll._id}}" target="_blank">
+          <a class="btn btn-block btn-info action" href="https://twitter.com/intent/tweet?text=This%20is%20my%20poll%20url%20:%20https://myvotingapp.herokuapp.com/poll/{{poll._id}}" target="_blank">
            <span class="fa fa-share"> Share on Twitter</span>
           </a>
         </div>

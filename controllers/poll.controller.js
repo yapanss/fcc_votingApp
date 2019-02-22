@@ -47,7 +47,7 @@ module.exports = {
           resolve(poll)
         }
       })
-    }) 
+    })
   },
 
   updatePoll: (id, newTopic) => {
@@ -56,13 +56,11 @@ module.exports = {
       _id: id
     },
       {$push:{
-        // title: newData.title,
-        // description: newData.description,
-        // author: newData.author,
+
         topics: newTopic
        }
       },
-      {new:true}, 
+      {new:true},
       (err, poll) => {
         if(err) {
           reject(err)
@@ -70,7 +68,7 @@ module.exports = {
           resolve(poll)
         }
       })
-    }) 
+    })
     },
 
   deletePoll: (id) => {
@@ -89,13 +87,11 @@ module.exports = {
       _id: id
     },
       {$set:{
-        // title: newData.title,
-        // description: newData.description,
-        // author: newData.author,
-        topics: data.topics, voters:data.voters 
+
+        topics: data.topics, voters:data.voters
        }
       },
-      {new:true}, 
+      {new:true},
       (err, poll) => {
         if(err) {
           reject(err)
@@ -103,7 +99,7 @@ module.exports = {
           resolve(poll)
         }
       })
-    }) 
+    })
     }
 }
 

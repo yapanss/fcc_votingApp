@@ -39,6 +39,7 @@ export class AddPollComponent implements OnInit {
   } else{
     this.apiService.postForm('poll', poll)
         .subscribe(response => {
+          console.log(response['poll'], response['message'])
           alert('poll créé !')
           this.route.navigate(['/mypoll'])
         })

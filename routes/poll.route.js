@@ -6,14 +6,15 @@ module.exports = (app) => {
     .get((req, res) => {
       handlePoll.getAllPolls()
       .then((polls) => {
-        res.json(polls)
+        console.log(polls)
+        res.send(polls)
       })
       .catch((err) => console.log(err))
     })
     .post((req, res) => {
      handlePoll.postPoll(req.body)
      .then(poll => {
-     	res.json(poll)
+     	res.send(poll)
      })
      .catch(err => console.log(err))
     })
@@ -23,8 +24,7 @@ module.exports = (app) => {
       id = req.params.id
       handlePoll.getOnePoll(id)
       .then((poll) => {
-
-        res.json(poll)
+         res.send(poll)
       })
       .catch((err) => console.log("ERREUR...", err))
     })
@@ -32,14 +32,14 @@ module.exports = (app) => {
       id = req.params.id
       handlePoll.updatePoll(id, req.body)
       .then((poll) => {
-        res.json({message: 'poll modifiée avec succès', poll: poll})
+        res.send(poll)
       })
     })
     .delete((req, res) => {
       id = req.params.id
       handlePoll.deletePoll(id)
       .then((poll) => {
-        res.json({message: 'poll supprimée avec succès'})
+        res.send({message: 'poll supprimée avec succès'})
       })
     })
 
@@ -49,7 +49,7 @@ module.exports = (app) => {
       // id2 = req.params.id2
       handlePoll.updateVote(id, req.body)
       .then((poll) => {
-        res.json(poll)
+        res.send(poll)
       })
       .catch((err) => console.log("ERREUR...", err))
     })
@@ -59,7 +59,7 @@ module.exports = (app) => {
       console.log(req.ip)
       handlePoll.getSomePolls(req.params.parame)
       .then((polls) => {
-        res.json(polls)
+        res.send(polls)
       })
       .catch((err) => console.log(err))
     })
