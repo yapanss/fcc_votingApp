@@ -1,3 +1,4 @@
+<div id="background">
 <div class="container mb-5 mt-5">
   <h1 class="text-center mb-5">New Poll Form</h1>
 
@@ -5,38 +6,39 @@
 
   <!-- Title -->
   <div class="form-group row">
-      <label for="poll_title" class="col-2 col-form-label">Title :</label>
-    <div class="col-8">
+      <label for="poll_title" class="col-lg-2 col-md-12 col-form-label">Title :</label>
+    <div class="col-lg-8 col-md-12">
       <input class="form-control" type="text" name="title" [(ngModel)]="title" required>
     </div>
   </div>
 
   <!-- Description -->
   <div class="form-group row">
-      <label for="poll_description" class="col-2">Description :</label>
-    <div class="col-8">
+      <label for="poll_description" class="col-lg-2 col-md-12">Description :</label>
+    <div class="col-lg-8 col-md-12">
       <textarea class="form-control" type="textarea" name="description" [(ngModel)]="description" required></textarea>
     </div>
   </div>
 
   <!-- Topics -->
 
-<div class="offset-2 mb-2">
+<div class="offset-2 mb-2 newTopicButton">
   <button *ngIf="!formStatus" (click)="displayTopicForm()" id="topicCreator" class="btn btn-info">
     <span class="fa fa-plus"> add new option</span>
   </button>
 </div>
-<div *ngIf="formStatus" class="row">
-    <div class="form-group col-6 offset-2">
+<div *ngIf="formStatus" class="row ">
+    <div class="form-group col-6 offset-2 newTopicButton">
         <input class="form-control" type="text" name="topicTitle" [(ngModel)]="topicTitle" placeholder="Topic title" required>
     </div>
   <div class="btn-group" style="padding-bottom: 12px">
-    <button type = "button" (click)="addTopic(topicTitle)" class="btn btn-secondary mr-1 bg-success">add</button>
+    <button type = "button" (click)="addTopic(topicTitle)" class="btn mr-1 btn-success">add</button>
     <button type="button" (click)="cancelTopic()" class="btn btn-secondary">cancel</button>
   </div>
 </div>
-  <div class="mt-3 offset-2">
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="mt-3 offset-2 newTopicButton">
+    <button type="submit" class="btn btn-success" id="submitButton">Submit</button>
   </div>
 </form>
+</div>
 </div>

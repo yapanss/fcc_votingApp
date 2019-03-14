@@ -3,29 +3,34 @@
     <h1 class="text-center" *ngIf="isMyPoll">My Polls</h1>
     <h1 class="text-center" *ngIf="!isMyPoll">Polls</h1>
 
-  <div class="col-8 offset-2">
-    <button id="addPoll" class="btn mb-3" routerLink="/new" *ngIf="auth.isAuthenticated()">
-      <span class="fa fa-plus"> Add new poll</span>
-    </button>
-    <div *ngFor = "let poll of polls; let i = index" class="list mb-2">
-      <div [routerLink]="['/poll', poll._id]" class="text-center listItem">
-        <h2>{{poll.title}}</h2>
-        <p>{{poll.description}}</p>
-      </div>
-      <div class="row actionContainer" *ngIf="isMyPoll">
-        <div class="col-6">
-          <a class="btn btn-block btn-info action" href="https://twitter.com/intent/tweet?text=This%20is%20my%20poll%20url%20:%20https://myvotingapp.herokuapp.com/poll/{{poll._id}}" target="_blank">
-           <span class="fa fa-share"> Share on Twitter</span>
-          </a>
-        </div>
-        <div class="col-6">
-          <button class="btn btn-block btn-danger action" (click)=delete(poll._id,i)>
-            <span class="fa fa-trash"> Delete</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div>
+      <button id="addPoll" class="btn btn-primary mb-3" routerLink="/new" *ngIf="auth.isAuthenticated()">
+        <span class="fa fa-plus"> Add new poll</span>
+      </button>
 
+<!-- ********************** LIST ************************** -->
+      <div class="row">
+        <div class="col-md-4" *ngFor="let poll of polls; let i = index">
+          <div id="overlayParent" (mouseover)="overlayOn(i)" (mouseout)="overlayOff(i)" class="mb-2" [routerLink]="isMyPoll ? null : ['/poll', poll._id]">
+            <h5 class="text-center">{{poll.title}}</h5>
+            <div class="overlays row" id="overlay_{{i}}" *ngIf="isMyPoll">
+              <a href="https://twitter.com/intent/tweet?text=This%20is%20my%20poll%20url%20:%20https://myvotingapp.herokuapp.com/poll/{{poll._id}}" class="btn action col-4" target="_blank" tooltip="Share via twitter" placement="top" show-delay="500" theme="light" offset="8">
+                <span class="fa fa-share"></span>
+              </a>
+              <button id="trash" class="btn action col-4" (click)="delete(poll._id,i)" tooltip="Delete the poll" placement="top" show-delay="500" theme="light" offset="8">
+                <span class="fa fa-trash"></span>
+              </button>
+              <button id="chevron" class="btn action col-4" [routerLink]="['/poll', poll._id]" tooltip="Continue to the voting page" placement="top" show-delay="500" theme="light" offset="8">
+                <span class="fa fa-chevron-right"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<!-- ********************** ************************** -->
+
+    </div>
   </div>
 </div>

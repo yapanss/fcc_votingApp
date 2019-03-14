@@ -4,10 +4,15 @@ nav {
   background-color: #708090;
   position: sticky;
   top: 0;
+  z-index: 2
 }
 
 .navbar-brand {
   color: $linkcolor;
+}
+
+button.navbar-toggler {
+  border: solid 1px white;
 }
 
 img {
@@ -31,3 +36,34 @@ li {
  li.log:hover {
     color: #fff;
  }
+
+#polls {
+  margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+
+  #polls {
+    margin-right: 0;
+  }
+  li a {
+    text-align: center;
+    font-size: 1.2em;
+    color: white
+    /*border-bottom: solid 1px white;*/
+  }
+  li img {
+    display: none;
+  }
+
+  .navbar-brand {
+    margin: auto;
+    font-size: 2em;
+  }
+  .navbar-nav {
+    border-top: solid 1px white;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

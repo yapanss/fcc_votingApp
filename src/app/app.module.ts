@@ -10,6 +10,8 @@ import { AddPollComponent } from './add-poll/add-poll.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { ChartsModule } from 'ng2-charts';
+import {TooltipModule} from 'ng2-tooltip-directive';
 
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
@@ -33,6 +35,8 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ChartsModule,
+    TooltipModule,
     GoogleChartsModule.forRoot()
   ],
   providers: [AuthService],

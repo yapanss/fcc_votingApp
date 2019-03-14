@@ -1,53 +1,52 @@
-
+<div id="background">
 <div *ngIf="poll" class="container">
 
   <div class="mt-3 mb-5">
     <h1 class="text-center">{{poll.title}}</h1>
+    <p class="text-center">{{poll.description}}</p>
   </div>
 
-  <div class="card-group mt-5 mb-5">
+  <div id="voteContainer" class="row mt-5 mb-5">
 
     <!-- Voting Box -->
-    <section class="card">
-      <header class="card-header text-center">
+    <section class="col-md-6 col-sm-12" id="voteTextContainer">
+      <header class="bg-secondary text-center voteTextHeader">
         <h2>Vote Here</h2>
       </header>
-      <div class="card-block mt-2 mb-2">
-          <div *ngFor="let topic of poll.topics; let i=index" class="card-group mb-1 mt-1 ml-2 mr-2 voteLine">
-            <div class="col-10">
-              <p id="voteText">{{topic.title}} : {{topic.votes}} votes</p>
+      <div class=" mt-2 mb-2" id="voteTextContent">
+          <div *ngFor="let topic of poll.topics; let i=index" class="mb-1 mt-1 ml-2 mr-2 voteLine row">
+            <div class="col-sm-12 col-md-9 col-lg-10">
+              <p class="voteText">{{topic.title}} : {{topic.votes}} votes</p>
             </div>
-            <div class="col-2">
-              <button class="btn btn-secondary" (click)="vote(i)">vote</button>
+            <div class="col-sm-12 col-md-3 col-lg-2">
+              <button class="btn btn-success voteButton" (click)="vote(i)">vote</button>
             </div>
           </div>
-
-          <div *ngIf="auth.isAuthenticated()" style="padding-left: 5px" class="mt-3 ml-1">
+      </div>
+        <div *ngIf="auth.isAuthenticated()" style="padding-left: 5px" class="mt-3 ml-1">
             <button *ngIf="!formStatus" (click)="displayTopicForm()" id="topicCreator" class="btn btn-primary">
               <span class="fa fa-plus"> add new option</span>
             </button>
             <div *ngIf="formStatus">
-              <input type="text" name="topicTitle" [(ngModel)]="topicTitle" required placeholder="Option title">
+              <input type="text" name="topicTitle" [(ngModel)]="topicTitle" required placeholder="Option title" id="optionInput">
               <button (click)="addTopic()" class="btn btn-success mr-1 ml-1">add</button>
               <button (click)="cancelTopic()" class="btn btn-secondary">cancel</button>
             </div>
-          </div>
-      </div>
+        </div>
     </section>
 
     <!-- Voting Chart -->
-    <section class="card">
-      <header class="card-header text-center">
+    <section class="col-md-6 col-sm-12" id="voteChartContainer">
+      <header class="bg-secondary text-center voteTextHeader">
         <h2>Voting Chart</h2>
       </header>
-      <div class="card-block charContainer">
-        <google-chart
-          [type]="barChartType"
-          [data]="barChartData"
-          [options]="barOption"
-          [width]="500">
-        </google-chart>
+      <div style="display:block; height: 500px; background-color: white">
+        <canvas baseChart [data]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" ></canvas>
       </div>
     </section>
+
+  <!-- CHART.JS -->
+
   </div>
+</div>
 </div>

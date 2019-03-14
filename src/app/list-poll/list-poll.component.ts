@@ -16,6 +16,7 @@ isMyPoll: boolean = false
 texte: string = "Bonjour"
 // polls: Array<Poll>
 polls: Poll[]
+pollUrl: string = "['/poll', poll._id]"
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
@@ -37,6 +38,20 @@ polls: Poll[]
       ).subscribe((polls: Poll[]) => {
           this.polls = polls
       })
+  }
+
+  overlayOn(i) {
+    if(this.isMyPoll) {
+      this.pollUrl = ""
+      document.getElementById('overlay_'+i).style.display = 'block'
+    }
+  }
+
+  overlayOff(i) {
+    if(this.isMyPoll) {
+      this.pollUrl = "['/poll', poll._id]"
+      document.getElementById('overlay_'+i).style.display = 'none'
+    }
   }
 
   delete(id,index) {

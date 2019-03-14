@@ -19,25 +19,35 @@ export class DetailPollComponent implements OnInit {
   id: string
   formStatus: boolean = false
 
-  barChartType = 'PieChart'
+  // barChartType = 'PieChart'
+  // barChartData = []
+  //   barOption = {
+  //     pieHole: 0.5,
+  //     height: 300,
+  //     chartArea: {
+  //       height: '80%',
+  //       width: '80%'
+  //     },
+  //     legend: {
+  //       alignment: 'center',
+  //       position: 'bottom'
+  //     },
+  //     animation: {
+  //       duration: 1000,
+  //       easing: 'out',
+  //       startup: true
+  //   }
+  // }
+
+  barChartType = 'doughnut'
+  barChartLabels = []
   barChartData = []
-    barOption = {
-      pieHole: 0.5,
-      height: 300,
-      chartArea: {
-        height: '80%',
-        width: '80%'
-      },
-      legend: {
-        alignment: 'center',
-        position: 'bottom'
-      },
-      animation: {
-        duration: 1000,
-        easing: 'out',
-        startup: true
-    }
+  barChartOptions = {
+      scaleShowVerticaleLines: false,
+      responsive: true,
+      maintainAspectRatio: false
   }
+  barChartLegend: true
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
@@ -55,17 +65,26 @@ export class DetailPollComponent implements OnInit {
         catchError(err => {throw(err)})
       ).subscribe((poll: Poll) => {
         this.poll = poll
-        this.barChartData = this.poll.topics.map(topic => {
-          return [topic.title, topic.votes]
-        })
+
+        // this.barChartData = this.poll.topics.map(topic => {
+        //   return [topic.title, topic.votes]
+        // })
+        console.log("poll : ",poll)
+        this.barChartLabels = this.poll.topics.map(topic => topic.title)
+        this.barChartData = this.poll.topics.map(topic => topic.votes)
+        console.log(document)
+        console.log(this.barChartLabels)
       })
   }
 
   createBarChartData(poll) {
-    let data = poll.topics.map(topic => {
-          return [topic.title, topic.votes]
-    })
+    let data = poll.topics.map(topic => topic.votes)
     return data
+  }
+
+  createBarChartLabels(poll) {
+    let labels = poll.topics.map(topic => topic.title)
+    return labels
   }
 
   displayTopicForm() {
@@ -85,6 +104,7 @@ export class DetailPollComponent implements OnInit {
         .subscribe((poll: Poll) => {
           this.poll = poll
           this.barChartData = this.createBarChartData(this.poll)
+          this.barChartLabels = this.createBarChartLabels(this.poll)
           this.formStatus = false
     })
     }

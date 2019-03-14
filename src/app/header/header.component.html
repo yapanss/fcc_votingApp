@@ -1,17 +1,21 @@
-<div class="">
-<nav class="navbar navbar-expand-sm d-flex justify-content-between container-fluid">
+<nav class="navbar navbar-expand-md navbar-dark container-fluid">
   <a routerLink="/" class="navbar-brand">
     My Voting App
   </a>
-  <ul class="navbar-nav nav-pills">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav nav-pills  ml-auto">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/home">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">
         <span class="fa fa-home"> Home</span>
       </a>
     </li>
-    <li class="nav-item"><a class="nav-link" routerLink="/new" *ngIf="auth.isAuthenticated()">Create Poll</a></li>
-    <li class="nav-item"><a class="nav-link" routerLink="/mypoll" *ngIf="auth.isAuthenticated()">My polls</a></li>
-    <li class="nav-item mr-5"><a class="nav-link" routerLink="/poll">Polls</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/new" *ngIf="auth.isAuthenticated()" routerLinkActive="active">Create Poll</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/mypoll" *ngIf="auth.isAuthenticated()" routerLinkActive="active">My polls</a></li>
+    <li class="nav-item" id="polls"><a class="nav-link" routerLink="/poll" routerLinkActive="active">Polls</a></li>
     <li class="nav-item">
       <a class="nav-link log" (click)="auth.login()" *ngIf="!auth.isAuthenticated()">
         <span class="fa fa-sign-in"> Sign in </span>
@@ -26,5 +30,6 @@
       </a>
     </li>
   </ul>
-</nav>
 </div>
+</nav>
+
